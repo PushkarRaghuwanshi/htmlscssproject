@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Art of Living - Scanning Session</title>
+  <style>
+    /* Reset default margins */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Top Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: linear-gradient(to right, #7d194c, #5a1d84);
+      position: relative;
+      z-index: 10;
+    }
+
+    .navbar img {
+      height: 40px;
+    }
+
+    .language-selector {
+      background-color: #C09F30 ;
+      padding: 8px 15px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px #D4AF37 solid;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 91vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px;
+    }
+
+    /* Background GIF */
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+      padding: 40px;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      max-width: 700px;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #d1d5db;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background-color: #f1c40f;
+      color: black;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      border: 1px solid #f1c40f;
+      color: #f1c40f;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary:hover, .btn-secondary:hover {
+      opacity: 0.8;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .navbar {
+      padding: 15px 30px;
+    }
+
+      .hero video {
+      padding: 30px;
+    }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 1.6rem;
+      }
+      .hero-content p {
+        font-size: 0.9rem;
+
+      }
+
+      .navbar {
+      padding: 15px 20px;
+    }
+
+      .hero video {
+      padding: 20px;
+    }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <img src="https://i.ibb.co/N2Kbnkd/artofliving-logo.png" alt="The Art of Living Logo">
+    <div class="language-selector">
+      India - English ▼
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Background GIF/Video -->
+    <video autoplay loop muted playsinline>
+      <source src="Makeshift.MOV" type="video/mp4">
+      <!-- fallback if browser doesn't support -->
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Dark overlay -->
+    <div class="overlay"></div>
+
+    <!-- Main content -->
+    <div class="hero-content">
+      <h1>Discover clarity when uncertainty clouds your path.</h1>
+      <p>Scanning reveals what you need to know, when you need it most.</p>
+      <div class="buttons">
+        <button class="btn-primary">Book Your Session</button>
+        <button class="btn-secondary">▷ Know More</button>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
