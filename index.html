@@ -5,25 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Art of Living - Scanning Session</title>
   <style>
-    /* Reset default margins */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body, html {
+    html, body {
+      width: 100%;
       height: 100%;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Lato', sans-serif;
+      background-color: #F9F9F9;
     }
 
-    /* Top Navbar */
+    /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 40px;
-      background: linear-gradient(to right, #7d194c, #5a1d84);
+      padding: 20px 60px;
+      background: linear-gradient(to right, #5A2639, #8E3A59);
       position: relative;
       z-index: 10;
     }
@@ -33,174 +34,257 @@
     }
 
     .language-selector {
-      background-color: #C09F30 ;
+      background-color: #C09F30;
       padding: 8px 15px;
       border-radius: 12px;
       font-weight: 600;
       font-size: 14px;
       cursor: pointer;
-      border: 1px #D4AF37 solid;
+      border: 1px solid #D4AF37;
+      color: #5A2639;
     }
 
-    /* Hero Section */
-    .hero {
+    /* Container */
+    .container {
+      width: 100%;
+      height: calc(100vh - 70px); /* Adjusted after navbar */
       position: relative;
-      min-height: 91vh;
-      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 80px;
+      overflow: hidden;
     }
 
-    /* Background GIF */
-    .hero video {
+    .background{
+      position: absolute; width: 100%; height: 100%; padding: 60px;
+    }
+
+    /* Background Video */
+    .background video {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: 0.12;
       z-index: 0;
       pointer-events: none;
-      padding: 40px;
+      padding: 60px;
     }
 
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1;
-    }
-
-    .hero-content {
+    /* Content over video */
+    .content {
       position: relative;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 64px;
       z-index: 2;
-      color: white;
-      max-width: 700px;
+      padding: 0 20px;
+      text-align: center;
     }
 
-    .hero-content h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+    .text-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .text-section h1 {
+      max-width: 816px;
+      font-family: 'Playfair Display', serif;
+      font-size: 58px;
       font-weight: 700;
+      line-height: 1.2;
+      color: #F5F5F0;
+      text-shadow: 0px 0px 20px rgba(142, 58, 89, 0.3);
     }
 
-    .hero-content p {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      color: #d1d5db;
+    .text-section p {
+      max-width: 920px;
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 48px;
+      letter-spacing: 0.3px;
+      color: rgba(245, 245, 240, 0.85);
+      font-family: 'Lato', sans-serif;
     }
 
     .buttons {
       display: flex;
-      gap: 15px;
-      justify-content: center;
+      gap: 24px;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
-    .btn-primary {
-      background-color: #f1c40f;
-      color: black;
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-weight: 600;
+    .book-session {
+      width: 220px;
+      height: 56px;
+      padding: 10px;
+      background: linear-gradient(90deg, #D4AF37 0%, #C19D2F 100%);
+      box-shadow: 0px 0px 15px rgba(212, 175, 55, 0.4);
       border: none;
+      border-radius: 25px;
+      color: #5A2639;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
       cursor: pointer;
-      transition: 0.3s ease;
+      transition: all 0.3s ease;
     }
 
-    .btn-secondary {
-      background-color: transparent;
-      border: 1px solid #f1c40f;
-      color: #f1c40f;
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-weight: 600;
+    .know-more {
+      width: 220px;
+      height: 56px;
+      padding: 10px;
+      border: 1px solid #D4AF37;
+      background: transparent;
+      border-radius: 25px;
+      color: #D4AF37;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      box-shadow: 0px 0px 10px rgba(212, 175, 55, 0.2);
       cursor: pointer;
-      transition: 0.3s ease;
+      transition: all 0.3s ease;
     }
 
-    .btn-primary:hover, .btn-secondary:hover {
-      opacity: 0.8;
+    .book-session:hover,
+    .know-more:hover {
+      opacity: 0.85;
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .hero-content h1 {
-        font-size: 2rem;
+    .overlay{
+      width: 100%; height: 100%; background-color: #111111; 
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .text-section h1 {
+        padding: 0 40px;
+        font-size: 46px;
       }
-      .hero-content p {
-        font-size: 1rem;
+      .text-section p {
+        padding: 0 40px;
+        font-size: 28px;
+        line-height: 42px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        height: auto;
+        padding: 80px 20px;
+      }
+      .text-section h1 {
+        padding: 0 20px;
+        font-size: 38px;
+      }
+      .text-section p {
+        padding: 0 20px;
+        font-size: 24px;
+        line-height: 38px;
       }
       .buttons {
         flex-direction: column;
-        gap: 10px;
+        gap: 16px;
       }
+
       .navbar {
-      padding: 15px 30px;
+      padding: 20px 40px
     }
 
-      .hero video {
-      padding: 30px;
+    .background{
+      padding: 40px;
+    }
+
+    .background video {
+      padding: 40px;
+      opacity: 0.1;
     }
     }
 
     @media (max-width: 480px) {
-      .hero-content h1 {
-        font-size: 1.6rem;
+      .text-section h1 {
+        font-size: 32px;
       }
-      .hero-content p {
-        font-size: 0.9rem;
-
+      .text-section p {
+        font-size: 20px;
+        line-height: 32px;
+      }
+      .book-session, .know-more {
+        width: 100%;
       }
 
       .navbar {
-      padding: 15px 20px;
+      padding: 20px 20px
     }
 
-      .hero video {
+    .background{
       padding: 20px;
     }
+
+    .background video {
+      padding: 20px;
+      opacity: 0.1;
     }
+
+    .book-session{
+      
+      padding: 0px 30px;
+    }
+
+    .text-section h1 {
+      max-width: 100%;
+      font-size: 25px;
+      line-height: 1.4;
+    }
+
+    .text-section p {
+      max-width: 100%;
+      font-size: 18px;
+      line-height: 28px;
+    }
+  }   
   </style>
 </head>
+
 <body>
 
   <!-- Navbar -->
-  <div class="navbar">
-    <img src="https://i.ibb.co/N2Kbnkd/artofliving-logo.png" alt="The Art of Living Logo">
+  <div class="navbar" >
+    <img src="/LOGO.png" alt="The Art of Living Logo">
     <div class="language-selector">
       India - English ▼
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <!-- Background GIF/Video -->
-    <video autoplay loop muted playsinline>
-      <source src="Makeshift.MOV" type="video/mp4">
-      <!-- fallback if browser doesn't support -->
-      Your browser does not support the video tag.
-    </video>
+  <!-- Main Container -->
+  <div class="container">
+    <div class="background" >
+      <!-- Background Video -->
+      <div class="overlay"></div>
+      <video autoplay loop muted playsinline>
+        <source src="Makeshift.MOV" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
 
-    <!-- Dark overlay -->
-    <div class="overlay"></div>
-
-    <!-- Main content -->
-    <div class="hero-content">
-      <h1>Discover clarity when uncertainty clouds your path.</h1>
-      <p>Scanning reveals what you need to know, when you need it most.</p>
+    <!-- Content on top -->
+    <div class="content">
+      <div class="text-section">
+        <h1>Discover clarity when uncertainty clouds your path.</h1>
+        <p>Scanning reveals what you need to know, when you need it most.</p>
+      </div>
       <div class="buttons">
-        <button class="btn-primary">Book Your Session</button>
-        <button class="btn-secondary">▷ Know More</button>
+        <button class="book-session">Book Your Session</button>
+        <button class="know-more">Know More</button>
       </div>
     </div>
-  </section>
+  </div>
 
 </body>
 </html>
